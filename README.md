@@ -22,7 +22,7 @@ To get a local copy up and running, run the following commands.
    ```
 2.Go into the front-end directory:
   ```sh
-    cd $'\025'codetyper-frontend
+    cd codetyper-frontend
   ```
 3. Install NPM packages:
    ```sh
