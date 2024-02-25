@@ -1,0 +1,22 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+span {
+  transition: color 0.3s ease; /* Adjust duration as needed */
+}
+
+.DisplayInfo {
+  color: rgb(32, 181, 240);
+}
+
+.wpm {
+  color: rgb(32, 181, 240); /* Default color for the text */
+}
+
+.WPM-Number {
+  color: #cce5ff; /* Change this color to whatever you want for the number */
+}
