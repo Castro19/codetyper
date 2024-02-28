@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
 const TextThis = () => {
-  const [textToType, setTextToType] = useState(
-    "Hello I am testing my application. The quick brown fox jumps over the lazy dog."
-  );
-  const [typedPortion, setTypedPortion] = useState("");
-  const { text, time, setTime, manageText, timerActive } = useTimer();
+  const { text, time, setTime, manageText, timerActive, textToType } =
+    useTimer();
 
   useEffect(() => {
     if (time === 0 && !timerActive) {

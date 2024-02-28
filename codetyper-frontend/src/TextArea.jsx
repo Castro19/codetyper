@@ -2,7 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useTimer } from "./TimerContext";
 
 const TextArea = () => {
-  const { time, manageTimer, text, manageText, timerActive } = useTimer();
+  const {
+    time,
+    manageTimer,
+    text,
+    manageText,
+    timerActive,
+    activeSettingDisplay,
+  } = useTimer();
+  const [disabled, setDisabled] = useState(false);
 
   const handleTyping = (e) => {
     e.preventDefault();
@@ -10,15 +18,22 @@ const TextArea = () => {
     // console.log(e.target.value);
     if (!timerActive && e.target.value.length > 0) {
       console.log("Manage Timer: True");
+      console.log(`Display: ${activeSettingDisplay}`);
       manageTimer(true);
+      // setActiveSettingDisplay(false);
     }
   };
+
+  useEffect(() => {
+    if (time === 0) setDisabled(true);
+  }, [time]);
 
   return (
     <label>
       <h1>Type Here</h1>
       <textarea
         name="type"
+        disabled={disabled}
         rows={10}
         cols={100}
         value={text}

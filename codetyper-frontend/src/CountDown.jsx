@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useTimer } from "./Timer";
 
 const CountDown = () => {
-  const [time] = useTimer();
+  const { time } = useTimer();
 
   useEffect(() => {
     if (time === 0) {
