@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
-const TextThis = () => {
-  const { text, time, setTime, manageText, timerActive, textToType } =
-    useTimer();
+const TextThis = ({ textToType, text, setText }) => {
+  const { time, setTime, timerActive } = useTimer();
 
   useEffect(() => {
     if (time === 0 && !timerActive) {
-      manageText(""); // Clear the text
+      setText(""); // Clear the text
       setTime(10); // Reset the time after it reaches 0
     }
   }, [timerActive]);

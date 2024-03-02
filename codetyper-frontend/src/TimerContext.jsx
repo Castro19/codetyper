@@ -6,12 +6,7 @@ const TimerContext = createContext();
 // 2.) Create the Context Provider Component
 export const TimeProvider = ({ children }) => {
   const [time, setTime] = useState(10);
-  const [initialTime, setInitialTime] = useState(10);
-  const [textToType, setTextToType] = useState(
-    "Hello I am testing my application. The quick brown fox jumps over the lazy dog."
-  );
   const [timerActive, setTimerActive] = useState(false);
-  const [text, setText] = useState("");
   const [activeSettingDisplay, setActiveSettingDisplay] = useState(true);
 
   const manageTimer = (start) => {
@@ -26,10 +21,6 @@ export const TimeProvider = ({ children }) => {
     }
   };
 
-  const manageText = (newText) => {
-    setText(newText);
-  };
-
   return (
     <TimerContext.Provider
       value={{
@@ -37,14 +28,7 @@ export const TimeProvider = ({ children }) => {
         setTime,
         timerActive,
         manageTimer,
-        text,
-        textToType,
-        setTextToType,
-        manageText,
-        initialTime,
-        setInitialTime,
         activeSettingDisplay,
-        setActiveSettingDisplay,
       }}
     >
       {children}

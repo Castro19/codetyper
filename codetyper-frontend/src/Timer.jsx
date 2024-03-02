@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
 const Timer = () => {
-  const { time, setTime, timerActive, manageTimer, text, manageText } =
-    useTimer();
+  const { time, setTime, timerActive, manageTimer } = useTimer();
 
   useEffect(() => {
     let intervalId;

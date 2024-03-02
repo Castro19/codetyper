@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext.jsx";
 
-const WordsPerMinute = () => {
-  const { text, time, initialTime } = useTimer();
+const WordsPerMinute = ({ text, initialTime }) => {
+  const { time } = useTimer();
   const [WPM, setWPM] = useState(0);
   let calculation;
   useEffect(() => {

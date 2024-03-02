@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useTimer } from "./TimerContext";
 
-const TextArea = () => {
-  const {
-    time,
-    manageTimer,
-    text,
-    manageText,
-    timerActive,
-    activeSettingDisplay,
-  } = useTimer();
+const TextArea = ({ text, setText }) => {
+  const { time, manageTimer, timerActive, activeSettingDisplay } = useTimer();
   const [disabled, setDisabled] = useState(false);
 
   const handleTyping = (e) => {
     e.preventDefault();
-    manageText(e.target.value);
+    setText(e.target.value);
     // console.log(e.target.value);
     if (!timerActive && e.target.value.length > 0) {
       console.log("Manage Timer: True");

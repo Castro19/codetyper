@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
-const SettingsDisplay = () => {
-  const { setTime, setInitialTime, activeSettingDisplay, setTextToType } =
-    useTimer();
+const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
+  const { setTime, activeSettingDisplay } = useTimer();
   let data;
   const handleTimeChange = (newTime) => {
     setTime(newTime);
