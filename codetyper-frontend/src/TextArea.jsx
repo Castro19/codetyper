@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useTimer } from "./TimerContext";
+import Timer from "./Timer";
 
 const TextArea = ({ text, setText }) => {
-  const { time, manageTimer, timerActive, activeSettingDisplay } = useTimer();
-  const [disabled, setDisabled] = useState(false);
+  const { time, manageTimer, timerActive, activeSettingDisplay, disabled } =
+    useTimer();
 
   const handleTyping = (e) => {
     e.preventDefault();
@@ -18,8 +19,8 @@ const TextArea = ({ text, setText }) => {
   };
 
   useEffect(() => {
-    if (time === 0) setDisabled(true);
-  }, [time]);
+    if (timerActive && !disabled) manageTimer(true);
+  }, [timerActive]);
 
   return (
     <label>

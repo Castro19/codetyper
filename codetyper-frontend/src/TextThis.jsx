@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
-const TextThis = ({ textToType, text, setText }) => {
-  const { time, setTime, timerActive } = useTimer();
+const TextThis = ({ textToType, text, setText, initialTime }) => {
+  const { time, setTime, timerActive, manageTimer } = useTimer();
 
   useEffect(() => {
     if (time === 0 && !timerActive) {
@@ -10,6 +10,12 @@ const TextThis = ({ textToType, text, setText }) => {
       setTime(10); // Reset the time after it reaches 0
     }
   }, [timerActive]);
+
+  useEffect(() => {
+    if (text === textToType) {
+      manageTimer(false);
+    }
+  }, [text]);
 
   return (
     <div className="bg-background text-primaryText p-4 rounded-lg shadow">

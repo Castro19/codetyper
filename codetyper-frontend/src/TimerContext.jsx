@@ -8,6 +8,7 @@ export const TimeProvider = ({ children }) => {
   const [time, setTime] = useState(10);
   const [timerActive, setTimerActive] = useState(false);
   const [activeSettingDisplay, setActiveSettingDisplay] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   const manageTimer = (start) => {
     if (!timerActive && start) {
@@ -18,6 +19,7 @@ export const TimeProvider = ({ children }) => {
       // Stop Timer if its active and start is false
       setTimerActive(false);
       setActiveSettingDisplay(true);
+      setDisabled(false);
     }
   };
 

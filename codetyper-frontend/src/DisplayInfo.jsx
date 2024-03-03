@@ -9,7 +9,7 @@ const DisplayInfo = ({ text, initialTime }) => {
       </h1>
       <div className="mt-4 md:mt-6">
         <WordsPerMinute text={text} initialTime={initialTime} />
-        <Timer />
+        <Timer initialTime={initialTime} />
       </div>
     </div>
   );
