@@ -1,4 +1,4 @@
-import React, { useState, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 
 // 1.) Create the Context:
 const TimerContext = createContext();
@@ -9,6 +9,7 @@ export const TimeProvider = ({ children }) => {
   const [timerActive, setTimerActive] = useState(false);
   const [activeSettingDisplay, setActiveSettingDisplay] = useState(true);
   const [disabled, setDisabled] = useState(false);
+  const [gameState, setGameState] = useState("idle");
 
   const manageTimer = (start) => {
     if (!timerActive && start) {
@@ -23,11 +24,19 @@ export const TimeProvider = ({ children }) => {
     }
   };
 
+  useEffect(() => {
+    if (!timerActive && gameState === "active") {
+      setGameState("ended");
+    }
+  }, [timerActive, time, gameState, setGameState]);
+
   return (
     <TimerContext.Provider
       value={{
         time,
         setTime,
+        gameState,
+        setGameState,
         timerActive,
         manageTimer,
         activeSettingDisplay,

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TimeProvider } from "./TimerContext";
 import TextArea from "./TextArea";
 import DisplayInfo from "./DisplayInfo";
 import TextThis from "./TextThis";
 import { useHotkeys } from "react-hotkeys-hook";
 import SettingsDisplay from "./SettingsDisplay";
+import Reset from "./Reset";
 import "./App.css";
 
 function App() {
@@ -31,6 +32,11 @@ function App() {
         <DisplayInfo text={text} initialTime={initialTime} />
         <TextThis textToType={textToType} text={text} setText={setText} />
         <TextArea text={text} setText={setText} />
+        <Reset
+          setText={setText}
+          setInitialTime={setInitialTime}
+          initialTime={initialTime}
+        />
       </div>
     </TimeProvider>
   );

@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useTimer } from "./TimerContext";
 
-const TextThis = ({ textToType, text, setText, initialTime }) => {
-  const { time, setTime, timerActive, manageTimer } = useTimer();
+const TextThis = ({ textToType, text, setText }) => {
+  const { time, setTime, timerActive, manageTimer, gameState, setGameState } =
+    useTimer();
 
   useEffect(() => {
-    if (time === 0 && !timerActive) {
+    if (timerActive) {
+      setGameState("active");
+    } else if (time === 0 && !timerActive) {
       setText(""); // Clear the text
       setTime(10); // Reset the time after it reaches 0
+      setGameState("ended");
     }
-  }, [timerActive]);
+  }, [timerActive, time, gameState, setGameState]);
 
   useEffect(() => {
     if (text === textToType) {
