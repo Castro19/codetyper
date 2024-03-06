@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useTimer } from "../contexts/TimerContext";
-import Timer from "../display/Timer";
 
 const TextArea = ({ text, setText }) => {
   const { manageTimer, timerActive, gameState, setGameState } = useTimer();
@@ -8,7 +7,7 @@ const TextArea = ({ text, setText }) => {
   const handleTyping = (e) => {
     e.preventDefault();
     setText(e.target.value);
-    if (gameState === "idle") {
+    if (gameState !== "active") {
       setGameState("active");
       if (!timerActive) {
         manageTimer(true);

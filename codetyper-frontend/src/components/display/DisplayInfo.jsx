@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WordsPerMinute from "./WordsPerMinute";
 import Timer from "./Timer";
 const DisplayInfo = ({ text, initialTime }) => {

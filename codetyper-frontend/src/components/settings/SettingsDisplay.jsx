@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useTimer } from "../contexts/TimerContext";
 
 const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
@@ -23,7 +23,6 @@ const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
           throw new Error("Error Fetching from Diffs DB");
         }
         const data = await response.json();
-        console.log(data[newDiff]);
         setTextToType(data[newDiff]);
         return data;
       } catch (error) {

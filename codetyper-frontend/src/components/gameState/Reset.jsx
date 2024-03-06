@@ -10,7 +10,7 @@ const Reset = ({ setText, setInitialTime, initialTime }) => {
     if (timerActive) {
       setGameState("active");
     } else if (time === 0 && !timerActive) {
-      handleReset();
+      setGameState("ended");
     }
   }, [timerActive, time, gameState, setGameState]);
 
