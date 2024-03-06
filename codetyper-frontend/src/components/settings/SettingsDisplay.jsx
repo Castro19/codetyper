@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { useTimer } from "./TimerContext";
+import { useTimer } from "../contexts/TimerContext";
 
 const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
-  const { setTime, activeSettingDisplay } = useTimer();
-  let data;
+  const { setTime, gameState } = useTimer();
+
+  // Check if we should hide the display (gameState is 'active')
+  if (gameState === "active") {
+    return null; // The component will render nothing.
+  }
+
   const handleTimeChange = (newTime) => {
     setTime(newTime);
     setInitialTime(newTime);
   };
-
-  if (!activeSettingDisplay) {
-    return null; // The component will render nothing.
-  }
 
   const handleDiffChange = (newDiff) => {
     const fetchData = async () => {

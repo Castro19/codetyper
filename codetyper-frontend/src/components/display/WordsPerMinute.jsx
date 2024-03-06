@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useTimer } from "./TimerContext.jsx";
+import { useTimer } from "../contexts/TimerContext";
 
 const WordsPerMinute = ({ text, initialTime }) => {
   const { time, setTimerActive } = useTimer();
   const [WPM, setWPM] = useState(0);
+
   useEffect(() => {
-    if (!setTimerActive || time === 0) {
-      // console.log(initialTime);
+    if (!setTimerActive) {
+      // Conidition to not reset WPM, after the game has been reset
+      if (time === initialTime) {
+        return;
+      }
       // Calculate the elapsed time
       const elapsedTime = initialTime - time;
       const wordsTyped = text.length / 5;
@@ -14,7 +18,6 @@ const WordsPerMinute = ({ text, initialTime }) => {
       const calculation =
         minutesElapsed > 0 ? Math.ceil(wordsTyped / minutesElapsed) : 0;
       setWPM(calculation);
-      console.log(calculation);
     }
   }, [time]);
 

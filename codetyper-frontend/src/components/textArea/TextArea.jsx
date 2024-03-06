@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useTimer } from "./TimerContext";
-import Timer from "./Timer";
+import { useTimer } from "../contexts/TimerContext";
+import Timer from "../display/Timer";
 
 const TextArea = ({ text, setText }) => {
-  const {
-    time,
-    manageTimer,
-    timerActive,
-    activeSettingDisplay,
-    gameState,
-    setGameState,
-  } = useTimer();
+  const { manageTimer, timerActive, gameState, setGameState } = useTimer();
 
   const handleTyping = (e) => {
     e.preventDefault();
@@ -18,17 +11,10 @@ const TextArea = ({ text, setText }) => {
     if (gameState === "idle") {
       setGameState("active");
       if (!timerActive) {
-        console.log("Manage Timer: True");
-        console.log(`Display: ${activeSettingDisplay}`);
         manageTimer(true);
-        // setActiveSettingDisplay(false);
       }
     }
   };
-  // Start the timer, when timer becomes active:
-  useEffect(() => {
-    if (timerActive && gameState === "active") manageTimer(true);
-  }, [timerActive]);
 
   return (
     <label>

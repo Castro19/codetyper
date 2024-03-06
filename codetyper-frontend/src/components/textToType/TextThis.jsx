@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useTimer } from "./TimerContext";
+import { useTimer } from "../contexts/TimerContext";
 
 const TextThis = ({ textToType, text, setText }) => {
-  const { time, setTime, timerActive, manageTimer, gameState, setGameState } =
-    useTimer();
+  const { manageTimer } = useTimer();
 
-  useEffect(() => {
-    if (timerActive) {
-      setGameState("active");
-    } else if (time === 0 && !timerActive) {
-      setText(""); // Clear the text
-      setTime(10); // Reset the time after it reaches 0
-      setGameState("ended");
-    }
-  }, [timerActive, time, gameState, setGameState]);
-
+  // Effect to stop timer, if the user has typed
+  // all of the text accurately
   useEffect(() => {
     if (text === textToType) {
       manageTimer(false);

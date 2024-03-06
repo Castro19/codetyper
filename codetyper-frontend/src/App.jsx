@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { TimeProvider } from "./TimerContext";
-import TextArea from "./TextArea";
-import DisplayInfo from "./DisplayInfo";
-import TextThis from "./TextThis";
+import { TimeProvider } from "./components/contexts/TimerContext";
+import TextArea from "./components/textArea/TextArea";
+import DisplayInfo from "./components/display/DisplayInfo";
+import TextThis from "./components/textToType/TextThis";
 import { useHotkeys } from "react-hotkeys-hook";
-import SettingsDisplay from "./SettingsDisplay";
-import Reset from "./Reset";
+import SettingsDisplay from "./components/settings/SettingsDisplay";
+import Reset from "./components/gameState/Reset";
 import "./App.css";
 
 function App() {

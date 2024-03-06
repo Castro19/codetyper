@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useTimer } from "./TimerContext";
+import { useTimer } from "../contexts/TimerContext";
 
 const Timer = () => {
-  const { time, setTime, timerActive, manageTimer } = useTimer();
+  const { time, setTime, timerActive, manageTimer, gameState } = useTimer();
 
+  // Effect for the interval of the countdown timer
   useEffect(() => {
     let intervalId;
     if (timerActive) {
@@ -25,6 +26,12 @@ const Timer = () => {
       clearInterval(intervalId);
     };
   }, [timerActive]);
+
+  // Start the timer, when timer becomes active:
+  useEffect(() => {
+    if (timerActive && gameState === "active") manageTimer(true);
+  }, [timerActive, gameState]);
+
   return (
     <div className="text-secondaryText">
       Timer: <span className="text-accentBlue font-bold">{time}</span>

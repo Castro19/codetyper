@@ -7,20 +7,16 @@ const TimerContext = createContext();
 export const TimeProvider = ({ children }) => {
   const [time, setTime] = useState(10);
   const [timerActive, setTimerActive] = useState(false);
-  const [activeSettingDisplay, setActiveSettingDisplay] = useState(true);
-  const [disabled, setDisabled] = useState(false);
   const [gameState, setGameState] = useState("idle");
 
   const manageTimer = (start) => {
     if (!timerActive && start) {
       // start timer if its not active and start is true
       setTimerActive(true);
-      setActiveSettingDisplay(false);
+      setGameState("active");
     } else if (timerActive && !start) {
       // Stop Timer if its active and start is false
       setTimerActive(false);
-      setActiveSettingDisplay(true);
-      setDisabled(false);
     }
   };
 
@@ -39,7 +35,6 @@ export const TimeProvider = ({ children }) => {
         setGameState,
         timerActive,
         manageTimer,
-        activeSettingDisplay,
       }}
     >
       {children}
