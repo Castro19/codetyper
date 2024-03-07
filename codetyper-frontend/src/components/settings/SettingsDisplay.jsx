@@ -1,6 +1,6 @@
 import React from "react";
 import { useTimer } from "../contexts/TimerContext";
-
+import SettingMode from "./SettingMode";
 const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
   const { setTime, gameState } = useTimer();
 
@@ -8,6 +8,18 @@ const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
   if (gameState === "active") {
     return null; // The component will render nothing.
   }
+
+  const timeOptions = [
+    { id: 1, value: 15 },
+    { id: 2, value: 30 },
+    { id: 3, value: 60 },
+  ];
+
+  const difficultyOptions = [
+    { id: 1, value: "easy" },
+    { id: 2, value: "medium" },
+    { id: 3, value: "hard" },
+  ];
 
   const handleTimeChange = (newTime) => {
     setTime(newTime);
@@ -35,32 +47,12 @@ const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
   return (
     <div>
       SettingsDisplay
-      <div class="mode">
-        <div class="time">
-          <button class="text-btn" onClick={() => handleTimeChange(15)}>
-            15
-          </button>
-          <button class="text-btn" onClick={() => handleTimeChange(30)}>
-            30
-          </button>
-          <button class="text-btn" onClick={() => handleTimeChange(60)}>
-            60
-          </button>
-        </div>
-        <div class="difficulty">
-          <button className="text-btn" onClick={() => handleDiffChange("easy")}>
-            Easy
-          </button>
-          <button
-            className="text-btn"
-            onClick={() => handleDiffChange("medium")}
-          >
-            Medium
-          </button>
-          <button className="text-btn" onClick={() => handleDiffChange("hard")}>
-            Hard
-          </button>
-        </div>
+      <div className="mode">
+        <SettingMode options={timeOptions} handleMode={handleTimeChange} />
+        <SettingMode
+          options={difficultyOptions}
+          handleMode={handleDiffChange}
+        />
       </div>
     </div>
   );
