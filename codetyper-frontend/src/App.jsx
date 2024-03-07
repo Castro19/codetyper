@@ -7,7 +7,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import SettingsDisplay from "./components/settings/SettingsDisplay";
 import Reset from "./components/gameState/Reset";
 import "./App.css";
-
+import CodeTextArea from "./components/codeEditor/CodeTextArea";
 function App() {
   const [textToType, setTextToType] = useState(
     "Hello I am testing my application. The quick brown fox jumps over the lazy dog."
@@ -32,6 +32,7 @@ function App() {
         <DisplayInfo text={text} initialTime={initialTime} />
         <TextThis textToType={textToType} text={text} setText={setText} />
         <TextArea text={text} setText={setText} />
+        <CodeTextArea text={text} setText={setText} />
         <Reset
           setText={setText}
           setInitialTime={setInitialTime}
