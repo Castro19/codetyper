@@ -1,19 +1,20 @@
 import React, { useRef, useState } from "react";
 import { TimeProvider } from "./components/contexts/TimerContext";
-import TextArea from "./components/textArea/TextArea";
-import DisplayInfo from "./components/display/DisplayInfo";
-import TextThis from "./components/textToType/TextThis";
-import { useHotkeys } from "react-hotkeys-hook";
 import SettingsDisplay from "./components/settings/SettingsDisplay";
+import DisplayInfo from "./components/display/DisplayInfo";
+import ModeDisplay from "./components/modeDisplay/ModeDisplay";
 import Reset from "./components/gameState/Reset";
+import { useHotkeys } from "react-hotkeys-hook";
 import "./App.css";
-import CodeTextArea from "./components/codeEditor/CodeTextArea";
+
 function App() {
   const [textToType, setTextToType] = useState(
     "Hello I am testing my application. The quick brown fox jumps over the lazy dog."
   );
   const [text, setText] = useState("");
   const [initialTime, setInitialTime] = useState(10);
+  const [mode, setMode] = useState("regular");
+
   // Create a ref to store the editor instance
   const editorRef = useRef(null);
 
@@ -30,11 +31,16 @@ function App() {
         <SettingsDisplay
           setTextToType={setTextToType}
           setInitialTime={setInitialTime}
+          setMode={setMode}
         />
         <DisplayInfo text={text} initialTime={initialTime} />
-        <TextThis textToType={textToType} text={text} setText={setText} />
-        <TextArea text={text} setText={setText} />
-        <CodeTextArea text={text} setText={setText} editorRef={editorRef} />
+        <ModeDisplay
+          textToType={textToType}
+          text={text}
+          mode={mode}
+          setText={setText}
+          editorRef={editorRef}
+        />
         <Reset
           setText={setText}
           editorRef={editorRef}

@@ -1,13 +1,17 @@
 import React from "react";
 import { useTimer } from "../contexts/TimerContext";
 import SettingMode from "./SettingMode";
-const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
+const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
   const { setTime, gameState } = useTimer();
 
   // Check if we should hide the display (gameState is 'active')
   if (gameState === "active") {
     return null; // The component will render nothing.
   }
+  const modeOptions = [
+    { id: 1, value: "regular" },
+    { id: 2, value: "code" },
+  ];
 
   const timeOptions = [
     { id: 1, value: 15 },
@@ -20,6 +24,11 @@ const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
     { id: 2, value: "medium" },
     { id: 3, value: "hard" },
   ];
+
+  const handleModeChange = (newMode) => {
+    console.log(newMode);
+    setMode(newMode);
+  };
 
   const handleTimeChange = (newTime) => {
     setTime(newTime);
@@ -48,6 +57,7 @@ const SettingsDisplay = ({ setTextToType, setInitialTime }) => {
     <div>
       SettingsDisplay
       <div className="mode">
+        <SettingMode options={modeOptions} handleMode={handleModeChange} />
         <SettingMode options={timeOptions} handleMode={handleTimeChange} />
         <SettingMode
           options={difficultyOptions}

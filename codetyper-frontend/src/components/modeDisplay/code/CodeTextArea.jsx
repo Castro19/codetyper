@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Editor from "@monaco-editor/react";
-import { useTimer } from "../contexts/TimerContext";
+import { useTimer } from "../../contexts/TimerContext";
 const CodeTextArea = ({ text, setText, editorRef }) => {
   const { manageTimer, timerActive, gameState, setGameState } = useTimer();
 

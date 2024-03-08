@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useTimer } from "../contexts/TimerContext";
+import { useTimer } from "../../contexts/TimerContext";
 
 const TextArea = ({ text, setText }) => {
   const { manageTimer, timerActive, gameState, setGameState } = useTimer();

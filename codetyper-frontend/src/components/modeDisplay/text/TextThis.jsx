@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useTimer } from "../contexts/TimerContext";
+import { useTimer } from "../../contexts/TimerContext";
 
 const TextThis = ({ textToType, text, setText }) => {
   const { manageTimer } = useTimer();
