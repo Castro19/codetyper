@@ -1,10 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { useTimer } from "../contexts/TimerContext";
-const CodeTextArea = ({ text, setText }) => {
-  // Create a ref to store the editor instance
-  const editorRef = useRef(null);
-  const { time } = useTimer();
+const CodeTextArea = ({ text, setText, editorRef }) => {
   const { manageTimer, timerActive, gameState, setGameState } = useTimer();
 
   // This function will be called when the editor is mounted
@@ -14,7 +11,6 @@ const CodeTextArea = ({ text, setText }) => {
     // Now you can use the editor instance, for example, to get the model
     const model = editor.getModel();
     const value = model.getValue();
-    console.log(value);
   };
 
   // Handles the change in text for the code editor
@@ -23,7 +19,6 @@ const CodeTextArea = ({ text, setText }) => {
       const model = editorRef.current.getModel();
       const value = model.getValue();
       setText(value);
-      console.log("Editor content on effect:", value);
       if (gameState !== "active") {
         setGameState("active");
         if (!timerActive) {

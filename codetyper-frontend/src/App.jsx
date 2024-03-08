@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { TimeProvider } from "./components/contexts/TimerContext";
 import TextArea from "./components/textArea/TextArea";
 import DisplayInfo from "./components/display/DisplayInfo";
@@ -14,6 +14,8 @@ function App() {
   );
   const [text, setText] = useState("");
   const [initialTime, setInitialTime] = useState(10);
+  // Create a ref to store the editor instance
+  const editorRef = useRef(null);
 
   useHotkeys("tab+enter", (event) => {
     event.preventDefault();
@@ -32,9 +34,10 @@ function App() {
         <DisplayInfo text={text} initialTime={initialTime} />
         <TextThis textToType={textToType} text={text} setText={setText} />
         <TextArea text={text} setText={setText} />
-        <CodeTextArea text={text} setText={setText} />
+        <CodeTextArea text={text} setText={setText} editorRef={editorRef} />
         <Reset
           setText={setText}
+          editorRef={editorRef}
           setInitialTime={setInitialTime}
           initialTime={initialTime}
         />
