@@ -1,7 +1,14 @@
 {
   "diffs": {
-    "easy": "The quick brown fox jumps over the lazy dog.",
-    "medium": "The mischievous puppy chased its tail with gleeful abandon, creating a whirlwind of dust.",
-    "hard": "The experienced archaeologist meticulously brushed away the ancient inscription, revealing centuries of hidden wisdom."
+    "regular": {
+      "easy": "The quick brown fox jumps over the lazy dog.",
+      "medium": "The mischievous puppy chased its tail with gleeful abandon, creating a whirlwind of dust.",
+      "hard": "The experienced archaeologist meticulously brushed away the ancient inscription, revealing centuries of hidden wisdom."
+    },
+    "code": {
+      "easy": "The quick brown fox jumps over the lazy dog.",
+      "medium": "The mischievous puppy chased its tail with gleeful abandon, creating a whirlwind of dust.",
+      "hard": "const handleDiffChange = (newDiff) => {\n  const fetchData = async () => {\n    try {\n      const response = await fetch(`http://localhost:3000/diffs`);\n      console.log(response);\n      if (response.ok) {\n        const data = await response.json();\n        setTextToType(data[mode][newDiff]);\n      } else {\n        throw new Error(\"Error Fetching from Diffs DB\");\n      }\n    } catch (error) {\n      throw new Error(\"Problem with fetch: \", error);\n    }\n  };\n  fetchData();\n};;"
+    }
   }
 }

@@ -1,0 +1,9 @@
+.codeContainer {
+  display: flex;
+  flex-direction: col; /* Stack them vertically */
+  height: 50vh; /* Adjust based on your needs */
+}
+.codeItem {
+  flex: 1; /* Each child takes equal space */
+  width: 50vw; /* Adjust based on your layout */
+}

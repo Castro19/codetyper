@@ -13,7 +13,7 @@ function App() {
   );
   const [text, setText] = useState("");
   const [initialTime, setInitialTime] = useState(10);
-  const [mode, setMode] = useState("regular");
+  const [mode, setMode] = useState("code");
 
   // Create a ref to store the editor instance
   const editorRef = useRef(null);
@@ -32,6 +32,7 @@ function App() {
           setTextToType={setTextToType}
           setInitialTime={setInitialTime}
           setMode={setMode}
+          mode={mode}
         />
         <DisplayInfo text={text} initialTime={initialTime} />
         <ModeDisplay

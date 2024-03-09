@@ -1,7 +1,7 @@
 import React from "react";
 import { useTimer } from "../contexts/TimerContext";
 import SettingMode from "./SettingMode";
-const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
+const SettingsDisplay = ({ setTextToType, setInitialTime, setMode, mode }) => {
   const { setTime, gameState } = useTimer();
 
   // Check if we should hide the display (gameState is 'active')
@@ -39,13 +39,13 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3000/diffs`);
-
-        if (!response) {
+        console.log(response);
+        if (response.ok) {
+          const data = await response.json();
+          setTextToType(data[mode][newDiff]);
+        } else {
           throw new Error("Error Fetching from Diffs DB");
         }
-        const data = await response.json();
-        setTextToType(data[newDiff]);
-        return data;
       } catch (error) {
         throw new Error("Problem with fetch: ", error);
       }

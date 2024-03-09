@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useTimer } from "../../contexts/TimerContext";
 
-const TextThis = ({ textToType, text, setText }) => {
+const TextDisplay = ({ textToType, text, setText }) => {
   const { manageTimer } = useTimer();
 
   // Effect to stop timer, if the user has typed
@@ -37,4 +37,4 @@ const TextThis = ({ textToType, text, setText }) => {
   );
 };
 
-export default TextThis;
+export default TextDisplay;
