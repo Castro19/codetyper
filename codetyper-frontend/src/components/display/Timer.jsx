@@ -33,8 +33,11 @@ const Timer = () => {
   }, [timerActive, gameState]);
 
   return (
-    <div className="text-secondaryText">
-      Timer: <span className="text-accentBlue font-bold">{time}</span>
+    <div className="text-secondaryText text-lg lg:text-xl p-2">
+      <span className="text-base lg:text-lg">Timer:</span>
+      <span className="text-accentBlue font-bold text-2xl :text-3xl mx-2 p-1 rounded shadow">
+        {time}
+      </span>
     </div>
   );
 };

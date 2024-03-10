@@ -22,9 +22,11 @@ const WordsPerMinute = ({ text, initialTime }) => {
   }, [time]);
 
   return (
-    <div className="text-secondaryText">
-      Words Per Minute:{" "}
-      <span className="text-accentGreen font-bold">{WPM}</span>
+    <div className="text-secondaryText text-lg lg:text-xl p-2">
+      <span className="text-base lg:text-lg">Words Per Minute:</span>
+      <span className="text-accentGreen font-bold text-1xl lg:text-2xl mx-2 p-1 rounded shadow">
+        {WPM}
+      </span>
     </div>
   );
 };

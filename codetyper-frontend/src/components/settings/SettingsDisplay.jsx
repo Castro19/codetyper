@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTimer } from "../contexts/TimerContext";
 import SettingMode from "./SettingMode";
+
 const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
   const { setTime, gameState } = useTimer();
+  const [settingMode, setSettingMode] = useState("time");
+
+  const settingOptions = [
+    { id: 1, value: "mode" },
+    { id: 2, value: "time" },
+    { id: 3, value: "diff" },
+  ];
+  const handleSettingModeChange = (mode) => {
+    setSettingMode(mode);
+  };
+  // Derive the visibility class based on the selected mode
+  const optionsContainerClasses = settingMode
+    ? "transition-opacity duration-500 ease-in opacity-100"
+    : "transition-opacity duration-500 ease-out opacity-0";
 
   // Check if we should hide the display (gameState is 'active')
   if (gameState === "active") {
@@ -19,7 +34,7 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
     { id: 3, value: 60 },
   ];
 
-  const difficultyOptions = [
+  const diffOptions = [
     { id: 1, value: "easy" },
     { id: 2, value: "medium" },
     { id: 3, value: "hard" },
@@ -64,15 +79,39 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
   };
 
   return (
-    <div>
-      SettingsDisplay
-      <div className="mode">
-        <SettingMode options={modeOptions} handleMode={handleModeChange} />
-        <SettingMode options={timeOptions} handleMode={handleTimeChange} />
-        <SettingMode
-          options={difficultyOptions}
-          handleMode={handleDiffChange}
-        />
+    <div className="flex justify-center items-center p-4">
+      <div className="settings-display flex flex-row w-full max-w-4xl mx-auto bg-gray-1000 p-4 rounded-lg border shadow-xl border-gray-400">
+        <div className="flex-1 flex flex-row justify-around items-center">
+          <SettingMode
+            options={settingOptions}
+            handleMode={handleSettingModeChange}
+            styleType="settingOption"
+          />
+        </div>
+        <div className="flex-1 flex flex-row justify-around items-center">
+          {settingMode === "time" && (
+            <SettingMode
+              options={timeOptions}
+              handleMode={handleTimeChange}
+              styleType="modeOption"
+            />
+          )}
+          {settingMode === "diff" && (
+            <SettingMode
+              options={diffOptions}
+              handleMode={handleDiffChange}
+              styleType="modeOption"
+            />
+          )}
+          {settingMode === "mode" && (
+            <SettingMode
+              options={modeOptions}
+              handleMode={handleModeChange}
+              styleType="modeOption"
+            />
+          )}
+          {/* ... other settings if any */}
+        </div>
       </div>
     </div>
   );

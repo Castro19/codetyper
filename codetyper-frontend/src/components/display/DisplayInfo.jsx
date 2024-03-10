@@ -4,10 +4,7 @@ import Timer from "./Timer";
 const DisplayInfo = ({ text, initialTime }) => {
   return (
     <div className="text-center">
-      <h1 className="text-4xl font-bold mt-4 md:mt-8 lg:text-5xl">
-        Display Info
-      </h1>
-      <div className="mt-4 md:mt-6">
+      <div className="mt-4 md:mt-6 bg-gray-1000 p-6 rounded-lg shadow-xl border-gray-400 flex justify-center items-center space-x-4">
         <WordsPerMinute text={text} initialTime={initialTime} />
         <Timer initialTime={initialTime} />
       </div>
