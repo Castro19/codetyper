@@ -35,6 +35,13 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
     setInitialTime(newTime);
   };
 
+  function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+  }
+
   const handleDiffChange = (newDiff) => {
     const fetchData = async () => {
       try {
@@ -44,8 +51,11 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
           throw new Error("Error Fetching from Diffs DB");
         }
         const data = await response.json();
-        setTextToType(data[newDiff]);
-        return data;
+        let word_data = data[newDiff];
+        console.log(word_data);
+        shuffle(word_data);
+        let shuffled_text = word_data.slice(0, 25).join(" ");
+        setTextToType(shuffled_text);
       } catch (error) {
         throw new Error("Problem with fetch: ", error);
       }

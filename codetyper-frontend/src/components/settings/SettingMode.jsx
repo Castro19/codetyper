@@ -1,6 +1,9 @@
 import React from "react";
 
 const SettingMode = ({ options, handleMode }) => {
+  const handleModeSelect = (mode) => {
+    // Display options in here with a sleek transiton
+  };
   return (
     <div className="mode">
       {options.map((option) => (
