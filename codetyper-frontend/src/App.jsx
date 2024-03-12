@@ -33,7 +33,11 @@ function App() {
           setInitialTime={setInitialTime}
           setMode={setMode}
         />
-        <DisplayInfo text={text} initialTime={initialTime} />
+        <DisplayInfo
+          text={text}
+          initialTime={initialTime}
+          textToType={textToType}
+        />
         <ModeDisplay
           textToType={textToType}
           text={text}

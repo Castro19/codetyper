@@ -66,6 +66,7 @@ const SettingsDisplay = ({ setTextToType, setInitialTime, setMode }) => {
           throw new Error("Error Fetching from Diffs DB");
         }
         const data = await response.json();
+        console.log(data);
         let word_data = data[newDiff];
         console.log(word_data);
         shuffle(word_data);
