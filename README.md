@@ -4,6 +4,8 @@
 
 This repository contains the foundational code for a web application that calculates the user's typing speed in Words Per Minute (WPM). This is currently setup to provide an interactive UI where users can type a given passage of text in a given amount of time. Once the time runs out, the application will calculate their typing speed.
 
+  <img src="https://live.staticflickr.com/65535/53626974425_2f2c03e7bb_b.jpg">
+
 ![Project Showcase](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXYzcTl4bHM1NHF3aGZqdGN5YW44OWJycjUybWV5djk5dTc4MTUzdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/abhVZ1zQSexhGeWDDy/giphy.gif)
 
 ## Features
